@@ -1,0 +1,21 @@
+{
+  "name": "Olivery - Aceite de Oliva Premium",
+  "short_name": "Olivery",
+  "description": "Tu boutique de aceites de oliva premium. Selección exclusiva de AOVE de las mejores regiones.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#1a3a1a",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
