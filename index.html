@@ -2109,6 +2109,8 @@ body.dark-theme .checkout-close:hover { color: var(--text); }
 .cta-wrapper {
   position: relative;
   display: inline-block;
+  width: 100%;
+  max-width: 620px;
 }
 
 .olive-icon-wrap {
@@ -2129,36 +2131,39 @@ body.dark-theme .checkout-close:hover { color: var(--text); }
 }
 
 @keyframes oliveTreeSway {
-  0%, 100% { transform: rotate(-5deg); }
-  25%       { transform: rotate(5deg); }
-  50%       { transform: rotate(-3deg); }
-  75%       { transform: rotate(4deg); }
+  0%, 100% { transform: rotate(-4deg); }
+  25%       { transform: rotate(4deg); }
+  50%       { transform: rotate(-2deg); }
+  75%       { transform: rotate(3deg); }
 }
 
 .product-dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  min-width: 380px;
-  max-width: 92vw;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, margin 0.4s ease;
+  opacity: 0;
+  margin-top: 0;
   background: var(--card-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xl), 0 0 0 1px rgba(212,175,55,0.2);
+  box-shadow: var(--shadow-md);
   border: 1px solid rgba(255,255,255,0.5);
-  z-index: 500;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+  width: 100%;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.dark-theme .product-dropdown {
   border: 1px solid rgba(255,255,255,0.1);
 }
 
+.product-dropdown.open {
+  max-height: 900px;
+  opacity: 1;
+  margin-top: 20px;
+}
 
 .hero-cta-section {
   background: var(--cream);
@@ -2169,13 +2174,6 @@ body.dark-theme .product-dropdown {
 }
 @media (max-width: 900px) {
   .hero-cta-section { padding: 40px 0 60px; }
-}
-
-.product-dropdown.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
 }
 
 .dropdown-header {
@@ -2196,18 +2194,12 @@ body.dark-theme .dropdown-header { color: var(--accent); }
   max-height: none;
   overflow-y: visible;
   padding: 6px 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
 }
-
-.dropdown-list::-webkit-scrollbar { width: 4px; }
-.dropdown-list::-webkit-scrollbar-track { background: transparent; }
-.dropdown-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
 .dropdown-list li a {
   display: block;
-  padding: 9px 20px;
-  font-size: 0.82rem;
+  padding: 10px 20px;
+  font-size: 0.85rem;
   color: var(--text);
   text-decoration: none;
   transition: background 0.15s, color 0.15s, padding-left 0.15s;
@@ -2230,7 +2222,7 @@ body.dark-theme .dropdown-list li a:hover {
 }
 
 @media (max-width: 600px) {
-  .product-dropdown { min-width: min(340px, 92vw); }
+  .product-dropdown { max-width: 100%; }
 }
 </style>
 
@@ -2288,6 +2280,9 @@ body.dark-theme .dropdown-list li a:hover {
     </h1>
     <p class="subtitle animate-on-scroll">LA MEJOR SELECCIÓN DE ACEITES DE OLIVA PREMIUM</p>
     <p class="description animate-on-scroll">Elegimos cuidadosamente cada marca para llevar a tu mesa solo la excelencia y pureza de las mejores regiones olivícolas.</p>
+  </div>
+</section>
+
 <section class="about">
   <div class="container">
     <div class="about-content">
@@ -2303,38 +2298,35 @@ body.dark-theme .dropdown-list li a:hover {
   </div>
 </section>
 
-<section class="hero-cta-section"><div class="container"><div style="text-align:center">
+<section class="hero-cta-section" id="productos"><div class="container"><div style="text-align:center">
     <div class="cta-wrapper animate-on-scroll">
       <button class="cta-button" id="ctaDropdownBtn" onclick="toggleProductDropdown(event)" type="button">
         <span>ELEGÍ EL TUYO Y DESCUBRÍ SUS CARACTERÍSTICAS</span>
         <span class="olive-icon-wrap" aria-hidden="true">
-          <svg class="olive-tree-svg" viewBox="0 0 40 48" xmlns="http://www.w3.org/2000/svg" width="32" height="38">
+          <svg class="olive-tree-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
             <!-- Trunk -->
-            <rect x="18" y="34" width="4" height="10" rx="2" fill="#7b4f2e"/>
-            <rect x="17.5" y="36" width="5" height="8" rx="1.5" fill="#5c3a1e" opacity="0.5"/>
-            <!-- Main canopy - bottom layer -->
-            <ellipse cx="20" cy="28" rx="13" ry="9" fill="#3a8c2a"/>
-            <!-- Middle layer -->
-            <ellipse cx="20" cy="22" rx="10" ry="8" fill="#4a9c33"/>
-            <!-- Top layer -->
-            <ellipse cx="20" cy="16" rx="7" ry="6" fill="#5ab040"/>
-            <!-- Top tip -->
-            <ellipse cx="20" cy="11" rx="4" ry="4" fill="#6abf4a"/>
-            <!-- Highlight -->
-            <ellipse cx="17" cy="13" rx="2.5" ry="3" fill="rgba(255,255,255,0.15)"/>
-            <!-- Olives scattered -->
-            <circle cx="13" cy="26" r="2" fill="#1e5c1e"/>
-            <circle cx="27" cy="25" r="1.8" fill="#1e5c1e"/>
-            <circle cx="16" cy="31" r="1.6" fill="#234d23"/>
-            <circle cx="24" cy="30" r="1.8" fill="#1e5c1e"/>
-            <circle cx="20" cy="27" r="1.5" fill="#234d23"/>
+            <path d="M22 36 C21 32, 20 30, 21 28 Q22 26, 24 26 Q26 26, 27 28 C28 30, 27 32, 26 36Z" fill="#8B6914"/>
+            <path d="M23 36 C22.5 33, 22 31, 22.5 28.5 Q23.5 27, 24.5 28.5 C25 31, 24.5 33, 25 36Z" fill="#6B4F12" opacity="0.5"/>
+            <!-- Canopy - wide rounded olive shape -->
+            <ellipse cx="24" cy="22" rx="16" ry="11" fill="#4A7A2E"/>
+            <ellipse cx="24" cy="19" rx="13" ry="9" fill="#5A8E38"/>
+            <ellipse cx="22" cy="16" rx="9" ry="7" fill="#6BA344"/>
+            <ellipse cx="26" cy="17" rx="8" ry="6" fill="#5E9A3A"/>
+            <!-- Light highlights -->
+            <ellipse cx="19" cy="15" rx="4" ry="3" fill="rgba(255,255,255,0.12)"/>
+            <!-- Olives -->
+            <ellipse cx="14" cy="24" rx="2.2" ry="1.8" fill="#2B5A16" transform="rotate(-15 14 24)"/>
+            <ellipse cx="33" cy="22" rx="2" ry="1.6" fill="#2B5A16" transform="rotate(10 33 22)"/>
+            <ellipse cx="20" cy="27" rx="1.8" ry="1.5" fill="#335E1E" transform="rotate(-8 20 27)"/>
+            <ellipse cx="29" cy="26" rx="1.9" ry="1.5" fill="#2B5A16" transform="rotate(12 29 26)"/>
+            <ellipse cx="24" cy="24" rx="1.7" ry="1.4" fill="#335E1E"/>
             <!-- Olive highlights -->
-            <circle cx="12.5" cy="25.3" r="0.7" fill="rgba(255,255,255,0.3)"/>
-            <circle cx="26.5" cy="24.3" r="0.6" fill="rgba(255,255,255,0.3)"/>
+            <ellipse cx="13.5" cy="23.3" rx="0.8" ry="0.5" fill="rgba(255,255,255,0.25)"/>
+            <ellipse cx="32.5" cy="21.3" rx="0.7" ry="0.4" fill="rgba(255,255,255,0.25)"/>
           </svg>
         </span>
       </button>
-      <div class="product-dropdown" id="productDropdown" aria-hidden="true">
+      <div class="product-dropdown" id="productDropdown">
         <div class="dropdown-header">Nuestros Productos</div>
         <ul class="dropdown-list">
           <li><a href="#" onclick="scrollToProduct(1); return false;">&#x1FAD2; Aceite Tupel&#237; Extra Virgen x 250 ml &mdash; <strong>$8.900</strong></a></li>
@@ -2357,8 +2349,6 @@ body.dark-theme .dropdown-list li a:hover {
       </div>
     </div>
 </div></div></section>
-
-<div id="productos"></div>
 
 <section id="beneficios" class="benefits">
   <div class="container">
@@ -3107,14 +3097,12 @@ function toggleProductDropdown(e) {
   e.stopPropagation();
   const dd = document.getElementById('productDropdown');
   dd.classList.toggle('open');
-  dd.setAttribute('aria-hidden', !dd.classList.contains('open'));
 }
 
 function scrollToProduct(productId) {
   // Close dropdown
   const dd = document.getElementById('productDropdown');
   dd.classList.remove('open');
-  dd.setAttribute('aria-hidden', 'true');
   // Open modal directly with product ID
   const product = productsData[productId];
   if (product) openModal(product, productId);
@@ -3125,7 +3113,6 @@ document.addEventListener('click', function(e) {
   const dd = document.getElementById('productDropdown');
   if (dd && dd.classList.contains('open') && !e.target.closest('.cta-wrapper')) {
     dd.classList.remove('open');
-    dd.setAttribute('aria-hidden', 'true');
   }
 });
 
