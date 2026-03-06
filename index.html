@@ -2224,7 +2224,42 @@ body.dark-theme .dropdown-list li a:hover {
 @media (max-width: 600px) {
   .product-dropdown { max-width: 100%; }
 }
+/* ── Ratoncito Image ── */
+.ratoncito-image-section {
+  padding: 40px 0;
+  text-align: center;
+  background-color: var(--cream);
+  transition: background-color 0.5s ease;
+}
+
+.ratoncito-img-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.ratoncito-img {
+  max-width: clamp(250px, 60vw, 450px);
+  height: auto;
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
+  transition: var(--transition);
+}
+
+.ratoncito-img:hover {
+  transform: translateY(-10px) scale(1.02);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+}
+
+@media (max-width: 600px) {
+  .ratoncito-image-section {
+    padding: 20px 0;
+  }
+}
 </style>
+
 
 
 </head>
@@ -2295,6 +2330,12 @@ body.dark-theme .dropdown-list li a:hover {
         <img src="descarga.jpeg" alt="Olivery Experiencia Gourmet"/>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="ratoncito-image-section">
+  <div class="ratoncito-img-container animate-on-scroll">
+    <img src="Ratoncito.png" alt="Ratoncito Olivery" class="ratoncito-img">
   </div>
 </section>
 
